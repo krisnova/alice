@@ -1,0 +1,91 @@
+#!/bin/bash
+
+CWD=$PWD
+ALICEPATH="/opt/alice"
+
+if [ ! -d "$ALICEPATH" ]; then
+   echo ""
+   echo "Unable to find alice project in ${ALICEPATH}!"
+   echo ""
+   echo "See: github.com/kris-nova/alice"
+   echo ""
+   exit -1
+fi
+
+
+function help() {
+    echo ""
+    echo "=========================================================="
+    echo "Alice is a Kubernetes management bash tool."
+    echo ""
+    echo "    author: kris nóva <kris@nivenly.com>"
+    echo ""
+    echo " [Usage]:  alice <command> <project>"
+    echo ""
+    echo "      Ex:  alice build nivenly.com'"
+    echo "      Ex:  alice deploy nivenly.com'"
+    echo ""
+    echo " [Available commands]:"
+    echo ""
+    echo "    build      build a container locally"
+    echo "    deploy     [build], [push], [install]"
+    echo "    install    install the manifests in <project>/alice"
+    echo "    tag        tag a container locally"
+    echo "    uninstall  uninstall the manifests in <project>/alice"
+    echo "=========================================================="
+    echo ""
+    exit
+}
+
+##
+#
+# [Exec]
+#
+cd $ALICEPATH
+
+if [ -z $1 ];then
+    help
+fi
+CMD=$1
+
+if [ -z "$2" ];then
+  P="."
+else
+  P=$2
+fi
+if [ "$CMD" = "help" ]; then
+    help
+fi
+if [ "$CMD" = "--help" ];then
+    help
+fi    
+if [ "$P" = "help" ];then
+    help
+fi
+if [ "$P" = "--help" ];then
+    help
+fi
+if [ "$P" = "." ];then
+    P=$CWD
+fi
+if [ "$P" != "$CWD" ];then
+  P="$CWD/$P"
+fi
+
+function debug(){
+  echo "------------------------------"
+  echo "CMD       :  $CMD"
+  echo "P         :  $P"
+  echo "CWD       :  $CWD"
+  echo "ALICEPATH :  $ALICEPATH"
+  echo "------------------------------"
+}
+######
+#debug
+######
+
+###########
+# [ Start ]
+
+cd $P
+$ALICEPATH/bin/$CMD $P
