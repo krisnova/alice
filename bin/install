@@ -12,20 +12,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+cd $1
+##############################
+CMD="install" # <--- Change this
+##############################
 if [ ! -f "Alicefile" ]; then
   echo "[ERROR] Unable to find 'Alicefile' in ${PWD}"
   exit 1
 fi
+. Alicefile
 if [ ! -d "alice" ]; then
   echo "[ERROR] Unable to find 'alice/' *.yaml files in ${PWD}"
   exit 1
 fi
-cd $1
-if [ -z "$alicefileinclude" ]; then
-  alicefileinclude=0
-  . Alicefile
-fi
-CMD="install" # <--- Change this
 echo "[$CMD]"
+if [ -f "Alicefile.${CMD}" ]; then
+  . Alicefile.${CMD}
+fi
 ############################################################################
 kubectl apply -f alice/*.yaml
