@@ -39,11 +39,12 @@ These are ran for specific commands.
 
 Available commands
 
- - build
- - deploy
- - install
- - push 
- - uninstall
+ - build (build and tag docker container)
+ - deploy (build and install)
+ - init (stub out a new alice project)
+ - install (install into kubernetes apply -f)
+ - push (push to registry)
+ - uninstall (uninstall into kubernetes delete -f)
 
 ```bash
 # Alicefile.build
