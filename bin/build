@@ -30,5 +30,5 @@ if [ -f "Alicefile.${CMD}" ]; then
   . Alicefile.${CMD}
 fi
 ############################################################################
-docker build -t $REPO/$NAME:$TAG .
-docker build -t $REPO/$NAME:$SHA .
+docker build --cpuset-cpus="0-15" -t $REPO/$NAME:$TAG . 
+docker build --cpuset-cpus="0-15" -t $REPO/$NAME:$SHA .
