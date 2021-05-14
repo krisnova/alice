@@ -15,6 +15,7 @@
 
 set -E
 
+
 ALICEPATH="/opt/alice"
 
 if [ ! -d "$ALICEPATH" ]; then
@@ -43,7 +44,9 @@ function help() {
     echo " [Available commands]:"
     echo ""
     echo "    build      build a container locally"
+    echo "    buildpush  [build], [push]"
     echo "    deploy     [build], [push], [install]"
+    echo "    init       initialize a new alice repository"
     echo "    install    install the manifests in <project>/alice"
     echo "    push       push the container image to the configured repository"
     echo "    run        will search for Alicefile.run and execute"
