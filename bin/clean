@@ -30,7 +30,7 @@ if [ -f "Alicefile.${CMD}" ]; then
   . Alicefile.${CMD}
 fi
 ############################################################################
-rm -rf public/*
-rm -rf bin/*
-rm -rf *~
-rm -rf *.tar.gz
+rm -vrf public/*
+rm -vrf bin/*
+rm -vrf *~
+rm -vrf *.tar.gz
