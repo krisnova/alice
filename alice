@@ -45,6 +45,7 @@ function help() {
     echo ""
     echo "    build      build a container locally"
     echo "    buildpush  [build], [push]"
+    echo "    clean      clean ~ /public /bin etc"
     echo "    deploy     [build], [push], [install]"
     echo "    init       initialize a new alice repository"
     echo "    install    install the manifests in <project>/alice"
