@@ -2,13 +2,18 @@
 
 My main kubernetes toolchain and configuration manager.
 
-### Install
+### Install Alice
 
 ```bash
 
 git clone git@github.com:kris-nova/alice.git /opt/alice
 ln -s /opt/alice/alice /usr/local/bin/alice
 
+```
+
+### Use Alice
+
+```
 cd ~/myproject
 alice init
 # edit Alicefile
