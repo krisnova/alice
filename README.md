@@ -10,8 +10,12 @@ git clone git@github.com:kris-nova/alice.git /opt/alice
 ln -s /opt/alice/alice /usr/local/bin/alice
 
 cd ~/myproject
+alice init
+# edit Alicefile
 alice build
+# edit alice/deploy.yaml
 alice deploy
+alice uninstall
 ```
 
 ### Alice Conventions
